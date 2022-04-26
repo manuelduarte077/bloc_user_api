@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_users_bloc/features/user/domain/entity.dart';
+import 'package:flutter_users_bloc/features/user/domain/entities/entity.dart';
 
 part 'geo_model.freezed.dart';
 part 'geo_model.g.dart';
