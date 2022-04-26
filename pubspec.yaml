@@ -9,16 +9,29 @@ environment:
   sdk: '>=2.16.2 <3.0.0'
 
 dependencies:
+  bloc: ^8.0.3
+  cupertino_icons: ^1.0.2
+  # Functional Programing
+  dartz: ^0.10.1
+  # Value equality
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
+  # State Managment
+  flutter_bloc: ^8.0.1
+  # API Call
+  http: ^0.13.4
 
-  cupertino_icons: ^1.0.2
+  # JSON serialization
+  json_annotation: ^4.4.0
 
 dev_dependencies:
+  flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^1.0.0
+  freezed: ^2.0.2
+  build_runner: ^2.1.10
+  json_serializable: ^6.1.6
 
 flutter:
   uses-material-design: true
