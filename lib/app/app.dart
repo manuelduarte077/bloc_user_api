@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_users_bloc/features/user/presentation/screens/home_screens.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -11,9 +12,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Material App Bar'),
         ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
+        body: const HomeScreen(),
       ),
     );
   }
