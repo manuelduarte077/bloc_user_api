@@ -7,7 +7,7 @@ import 'package:flutter_users_bloc/core/error_handling/error_handling.dart';
 import 'package:flutter_users_bloc/features/user/domain/entities/user_entity.dart';
 import 'package:flutter_users_bloc/features/user/domain/repositories/user_repository.dart';
 
-class UserReposittoryImpl implements UserRepository {
+class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<FailureEntity, List<UserEntity>>> fetchUsers() async {
     final jsonPlaceHolderV1 = JsonPlaceholderV1(
