@@ -10,7 +10,7 @@ class CustomNavigation extends StatelessWidget {
     return BottomAppBar(
       color: Colors.indigo,
       child: SizedBox(
-        height: 70,
+        height: 50,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -23,7 +23,7 @@ class CustomNavigation extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.post_add_sharp, color: Colors.white),
               onPressed: () {
-                Navigator.pushNamed(context, '/cart');
+                Navigator.pushNamed(context, '/posts');
               },
             ),
             IconButton(

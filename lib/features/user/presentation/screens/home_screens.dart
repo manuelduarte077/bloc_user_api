@@ -8,6 +8,7 @@ import 'package:flutter_users_bloc/features/user/presentation/widgets/custom_lis
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
   static const String routeName = '/';
 
   static Route route() {
@@ -20,6 +21,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Users Bloc'),
+        automaticallyImplyLeading: false,
+      ),
       bottomNavigationBar: const CustomNavigation(),
       body: Stack(
         children: [

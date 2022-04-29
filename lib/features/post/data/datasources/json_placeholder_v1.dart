@@ -2,16 +2,16 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter_users_bloc/core/error_handling/error_handling.dart';
-import 'package:flutter_users_bloc/features/user/data/models/user_model.dart';
+import 'package:flutter_users_bloc/features/post/data/models/post_model.dart';
 
 class JsonPlaceholderV1 {
+  final http.Client httpClient;
+
   JsonPlaceholderV1({
     required this.httpClient,
   });
 
-  final http.Client httpClient;
-
-  Future<List<UserModel>> fetchUsers() async {
+  Future<List<PostModel>> fetchPosts() async {
     try {
       final response = await httpClient.get(
         Uri.https('jsonplaceholder.typicode.com', '/users'),
@@ -19,12 +19,12 @@ class JsonPlaceholderV1 {
       if (response.statusCode == 200) {
         print(response.statusCode);
         try {
-          final List<UserModel> users = [];
+          final List<PostModel> users = [];
           final data = json.decode(utf8.decode(response.bodyBytes)) as List;
           print(users);
 
           for (int i = 0; i < data.length; i++) {
-            users.add(UserModel.fromJson(data[i]));
+            users.add(PostModel.fromJson(data[i]));
             print(i);
           }
           return users;

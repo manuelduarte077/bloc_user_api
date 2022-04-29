@@ -11,26 +11,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.indigo),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('User Lists'),
-        ),
-        body: MultiBlocProvider(
-          providers: [
-            BlocProvider<UsersListBloc>(
-              create: (context) =>
-                  UsersListBloc(userRepository: UserRepositoryImpl())
-                    ..add(const LoadUserList()),
-            )
-          ],
-          child: const HomeScreen(),
-        ),
-        // ),
-        // initialRoute: HomeScreen.routeName,
-        // onGenerateRoute: AppRouter.onGenerateRoute,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<UsersListBloc>(
+          create: (context) =>
+              UsersListBloc(userRepository: UserRepositoryImpl())
+                ..add(const LoadUserList()),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(primarySwatch: Colors.indigo),
+        initialRoute: HomeScreen.routeName,
+        onGenerateRoute: AppRouter.onGenerateRoute,
       ),
     );
   }

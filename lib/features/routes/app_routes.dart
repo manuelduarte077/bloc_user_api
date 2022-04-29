@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_users_bloc/features/post/presentation/screens/posts_screen.dart';
 import 'package:flutter_users_bloc/features/user/presentation/screens/home_screens.dart';
 
 class AppRouter {
@@ -8,8 +9,10 @@ class AppRouter {
     switch (settings.name) {
       case '/':
         return HomeScreen.route();
-      case '/home':
+      case HomeScreen.routeName:
         return HomeScreen.route();
+      case '/posts':
+        return PostsScreen.route();
 
       default:
         return _errorRoute();
