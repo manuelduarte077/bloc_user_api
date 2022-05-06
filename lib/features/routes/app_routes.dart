@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_users_bloc/features/post/presentation/screens/posts_screen.dart';
+import 'package:flutter_users_bloc/features/profile/presentation/screens/profile_screen.dart';
 import 'package:flutter_users_bloc/features/user/presentation/screens/home_screens.dart';
 
 class AppRouter {
@@ -13,6 +15,8 @@ class AppRouter {
         return HomeScreen.route();
       case '/posts':
         return PostsScreen.route();
+      case '/profile':
+        return ProfileScreen.route();
 
       default:
         return _errorRoute();

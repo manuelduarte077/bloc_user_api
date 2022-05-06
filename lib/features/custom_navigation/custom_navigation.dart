@@ -17,19 +17,20 @@ class CustomNavigation extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.home, color: Colors.white),
               onPressed: () {
-                Navigator.pushNamed(context, '/');
+                Navigator.pushReplacementNamed(context, '/');
               },
             ),
             IconButton(
               icon: const Icon(Icons.post_add_sharp, color: Colors.white),
               onPressed: () {
-                Navigator.pushNamed(context, '/posts');
+                // Navigator.pushNamed(context, '/posts');
+                Navigator.pushReplacementNamed(context, '/posts');
               },
             ),
             IconButton(
               icon: const Icon(Icons.person, color: Colors.white),
               onPressed: () {
-                Navigator.pushNamed(context, '/person');
+                Navigator.pushReplacementNamed(context, '/profile');
               },
             ),
           ],
