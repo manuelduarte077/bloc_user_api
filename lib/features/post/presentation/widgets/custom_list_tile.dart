@@ -16,36 +16,37 @@ class CustomListTile extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Row(
-            // mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CircleAvatar(
-                  radius: 26,
-                  child: Text(
-                    post.userId.toString(),
-                    style: TextStyles.userId,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-              Flexible(
-                child: Padding(
+          child: Card(
+            child: Row(
+              children: [
+                Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(post.title.replaceAll("\n", " "),
-                          style: TextStyles.postTitle),
-                      Text('Post id: ${post.id}', style: TextStyles.id),
-                      Text(post.body.replaceAll("\n", " ")),
-                    ],
+                  child: CircleAvatar(
+                    radius: 26,
+                    child: Text(
+                      post.userId.toString(),
+                      style: TextStyles.userId,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
-              )
-            ],
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(post.title.replaceAll("\n", " "),
+                            style: TextStyles.postTitle),
+                        Text('Post id: ${post.id}', style: TextStyles.id),
+                        Text(post.body.replaceAll("\n", " ")),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
         const Divider()

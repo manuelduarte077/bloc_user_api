@@ -14,7 +14,7 @@ class JsonPlaceholderV1 {
   Future<List<PostModel>> fetchPosts() async {
     try {
       final response = await httpClient.get(
-        Uri.https('jsonplaceholder.typicode.com', '/users'),
+        Uri.https('jsonplaceholder.typicode.com', '/posts'),
       );
       if (response.statusCode == 200) {
         print(response.statusCode);

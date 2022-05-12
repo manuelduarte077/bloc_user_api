@@ -21,6 +21,7 @@ class PostsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: const Text('Posts'),
         automaticallyImplyLeading: false,
       ),
@@ -37,7 +38,7 @@ class PostsScreen extends StatelessWidget {
                     ErrorDialog(errorObject: errorObject),
                 // If the state is successful -> we show the loaded list of posts
                 loadSuccess: (posts) => ListView.builder(
-                  itemCount: posts.length,
+                  itemCount: posts == null ? 0 : posts.length,
                   itemBuilder: (context, index) {
                     return CustomListTile(post: posts[index]);
                   },
@@ -50,6 +51,7 @@ class PostsScreen extends StatelessWidget {
             bottom: 50,
             right: 18,
             child: FloatingActionButton(
+              elevation: 0,
               onPressed: () => BlocProvider.of<PostsListBloc>(context)
                   .add(const LoadPostsList()),
               child: const Icon(Icons.refresh),

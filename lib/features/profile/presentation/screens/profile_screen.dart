@@ -104,19 +104,45 @@ class ProfileScreen extends StatelessWidget {
             top: 50,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                IconButton(
-                  icon: const Icon(
-                    Icons.more_vert,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {},
-                ),
+              children: const [
+                _PopupMenu(),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class _PopupMenu extends StatelessWidget {
+  const _PopupMenu({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton(
+      onSelected: (value) {
+        switch (value) {
+          case 'task':
+            Navigator.pushNamed(context, '/tasks');
+            break;
+          case 'favorites':
+            Navigator.pushNamed(context, '/favorites');
+            break;
+        }
+      },
+      itemBuilder: (context) => const [
+        PopupMenuItem(
+          value: 'task',
+          child: Text('Task'),
+        ),
+        PopupMenuItem(
+          value: 'favorites',
+          child: Text('Favorite'),
+        ),
+      ],
     );
   }
 }
