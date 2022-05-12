@@ -1,9 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:dartz/dartz.dart';
-
-import 'package:flutter_users_bloc/core/error_handling/error_handling.dart';
 import 'package:flutter_users_bloc/features/post/data/datasources/json_placeholder_v1.dart';
+import 'package:flutter_users_bloc/core/error_handling/error_handling.dart';
+
 import 'package:flutter_users_bloc/features/post/domain/entities/post_entity.dart';
 import 'package:flutter_users_bloc/features/post/domain/repositories/posts_repository.dart';
 

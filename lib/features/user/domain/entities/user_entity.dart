@@ -6,19 +6,19 @@ class UserEntity {
   final String name;
   final String username;
   final String email;
-  final List<AddressEntity> address;
+  final AddressEntity? address;
   final String phone;
   final String website;
-  final List<CompanyEntity> company;
+  final CompanyEntity? company;
 
   UserEntity({
     required this.id,
     required this.name,
     required this.username,
     required this.email,
-    required this.address,
+    this.address,
     required this.phone,
     required this.website,
-    required this.company,
+    this.company,
   });
 }

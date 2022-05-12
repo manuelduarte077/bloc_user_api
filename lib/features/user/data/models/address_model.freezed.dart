@@ -24,7 +24,7 @@ mixin _$AddressModel {
   String get suite => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get zipcode => throw _privateConstructorUsedError;
-  List<GeoModel> get geo => throw _privateConstructorUsedError;
+  GeoModel get geo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,11 +38,9 @@ abstract class $AddressModelCopyWith<$Res> {
           AddressModel value, $Res Function(AddressModel) then) =
       _$AddressModelCopyWithImpl<$Res>;
   $Res call(
-      {String street,
-      String suite,
-      String city,
-      String zipcode,
-      List<GeoModel> geo});
+      {String street, String suite, String city, String zipcode, GeoModel geo});
+
+  $GeoModelCopyWith<$Res> get geo;
 }
 
 /// @nodoc
@@ -81,8 +79,15 @@ class _$AddressModelCopyWithImpl<$Res> implements $AddressModelCopyWith<$Res> {
       geo: geo == freezed
           ? _value.geo
           : geo // ignore: cast_nullable_to_non_nullable
-              as List<GeoModel>,
+              as GeoModel,
     ));
+  }
+
+  @override
+  $GeoModelCopyWith<$Res> get geo {
+    return $GeoModelCopyWith<$Res>(_value.geo, (value) {
+      return _then(_value.copyWith(geo: value));
+    });
   }
 }
 
@@ -94,11 +99,10 @@ abstract class _$AddressModelCopyWith<$Res>
       __$AddressModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String street,
-      String suite,
-      String city,
-      String zipcode,
-      List<GeoModel> geo});
+      {String street, String suite, String city, String zipcode, GeoModel geo});
+
+  @override
+  $GeoModelCopyWith<$Res> get geo;
 }
 
 /// @nodoc
@@ -139,7 +143,7 @@ class __$AddressModelCopyWithImpl<$Res> extends _$AddressModelCopyWithImpl<$Res>
       geo: geo == freezed
           ? _value.geo
           : geo // ignore: cast_nullable_to_non_nullable
-              as List<GeoModel>,
+              as GeoModel,
     ));
   }
 }
@@ -152,8 +156,7 @@ class _$_AddressModel implements _AddressModel {
       required this.suite,
       required this.city,
       required this.zipcode,
-      required final List<GeoModel> geo})
-      : _geo = geo;
+      required this.geo});
 
   factory _$_AddressModel.fromJson(Map<String, dynamic> json) =>
       _$$_AddressModelFromJson(json);
@@ -166,12 +169,8 @@ class _$_AddressModel implements _AddressModel {
   final String city;
   @override
   final String zipcode;
-  final List<GeoModel> _geo;
   @override
-  List<GeoModel> get geo {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_geo);
-  }
+  final GeoModel geo;
 
   @override
   String toString() {
@@ -217,7 +216,7 @@ abstract class _AddressModel implements AddressModel {
       required final String suite,
       required final String city,
       required final String zipcode,
-      required final List<GeoModel> geo}) = _$_AddressModel;
+      required final GeoModel geo}) = _$_AddressModel;
 
   factory _AddressModel.fromJson(Map<String, dynamic> json) =
       _$_AddressModel.fromJson;
@@ -231,7 +230,7 @@ abstract class _AddressModel implements AddressModel {
   @override
   String get zipcode => throw _privateConstructorUsedError;
   @override
-  List<GeoModel> get geo => throw _privateConstructorUsedError;
+  GeoModel get geo => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AddressModelCopyWith<_AddressModel> get copyWith =>

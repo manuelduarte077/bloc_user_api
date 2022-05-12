@@ -17,17 +17,14 @@ class JsonPlaceholderV1 {
         Uri.https('jsonplaceholder.typicode.com', '/posts'),
       );
       if (response.statusCode == 200) {
-        print(response.statusCode);
         try {
-          final List<PostModel> users = [];
+          final List<PostModel> tasks = [];
           final data = json.decode(utf8.decode(response.bodyBytes)) as List;
-          print(users);
 
           for (int i = 0; i < data.length; i++) {
-            users.add(PostModel.fromJson(data[i]));
-            print(i);
+            tasks.add(PostModel.fromJson(data[i]));
           }
-          return users;
+          return tasks;
         } on Exception {
           throw DataParsingException();
         }

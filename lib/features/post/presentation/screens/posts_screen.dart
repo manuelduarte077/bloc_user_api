@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_users_bloc/features/custom_navigation/custom_navigation.dart';
+
 import 'package:flutter_users_bloc/features/post/presentation/bloc/posts_list_bloc.dart';
 import 'package:flutter_users_bloc/features/post/presentation/widgets/custom_list_tile.dart';
 import 'package:flutter_users_bloc/features/user/presentation/widgets/error_dialog.dart';
@@ -32,7 +34,8 @@ class PostsScreen extends StatelessWidget {
             builder: (context, state) {
               return state.when(
                 // If the state is the initial one -> then loading indicator.
-                initial: () => const Center(child: CircularProgressIndicator()),
+                initial: () =>
+                    const Center(child: CircularProgressIndicator.adaptive()),
                 // If the state is an error -> then we present the error message.
                 loadFailure: (errorObject) =>
                     ErrorDialog(errorObject: errorObject),

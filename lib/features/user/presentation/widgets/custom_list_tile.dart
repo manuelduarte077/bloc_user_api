@@ -6,10 +6,10 @@ import 'package:flutter_users_bloc/features/user/domain/entities/user_entity.dar
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
     Key? key,
-    required this.users,
+    required this.user,
   }) : super(key: key);
 
-  final UserEntity users;
+  final UserEntity user;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class CustomListTile extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 25,
                   child: Text(
-                    users.id.toString(),
+                    user.id.toString(),
                     style: TextStyles.userId,
                   ),
                 ),
@@ -32,23 +32,29 @@ class CustomListTile extends StatelessWidget {
             ],
           ),
         ),
-        Flexible(
+        Container(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(users.name.replaceAll("\n", " "),
-                    style: TextStyles.postTitle),
-                Text(users.username),
-                Text(users.email),
-                Text(users.phone),
-                Text(users.website),
+                Text(user.username),
+                Text(user.email),
+                Text(user.phone),
+                Text(user.website),
+                Text(user.address!.street),
+                Text(user.address!.suite),
+                Text(user.address!.city),
+                Text(user.address!.zipcode),
+                Text(user.address!.geo!.lat.toString()),
+                Text(user.address!.geo!.lng.toString()),
+                Text(user.company!.name),
+                Text(user.company!.catchPhrase),
+                Text(user.company!.bs),
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }

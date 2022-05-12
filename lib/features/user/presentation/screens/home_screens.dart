@@ -30,20 +30,22 @@ class HomeScreen extends StatelessWidget {
         children: [
           BlocBuilder<UsersListBloc, UsersListState>(
             builder: (context, state) {
-              print(state);
               return state.when(
                 // If the state is the initial one -> then loading indicator.
-                initial: () => const Center(child: CircularProgressIndicator()),
+                initial: () =>
+                    const Center(child: CircularProgressIndicator.adaptive()),
                 // If the state is an error -> then we present the error message.
                 loadFailure: (errorObject) =>
                     ErrorDialog(errorObject: errorObject),
                 // If the state is successful -> we show the loaded list of posts
-                loadSuccess: (users) => ListView.builder(
-                  itemCount: users.length,
-                  itemBuilder: (context, index) {
-                    return CustomListTile(users: users[index]);
-                  },
-                ),
+                loadSuccess: (users) {
+                  return ListView.builder(
+                    itemCount: users.length,
+                    itemBuilder: (context, index) {
+                      return CustomListTile(user: users[index]);
+                    },
+                  );
+                },
               );
             },
           ),
@@ -51,6 +53,7 @@ class HomeScreen extends StatelessWidget {
             bottom: 50,
             right: 18,
             child: FloatingActionButton(
+              elevation: 0,
               onPressed: () => BlocProvider.of<UsersListBloc>(context)
                   .add(const LoadUserList()),
               child: const Icon(Icons.refresh),

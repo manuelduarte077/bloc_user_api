@@ -24,10 +24,10 @@ mixin _$UserModel {
   String get name => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  List<AddressModel> get address => throw _privateConstructorUsedError;
+  AddressModel get address => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get website => throw _privateConstructorUsedError;
-  List<CompanyModel> get company => throw _privateConstructorUsedError;
+  CompanyModel get company => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,10 +44,13 @@ abstract class $UserModelCopyWith<$Res> {
       String name,
       String username,
       String email,
-      List<AddressModel> address,
+      AddressModel address,
       String phone,
       String website,
-      List<CompanyModel> company});
+      CompanyModel company});
+
+  $AddressModelCopyWith<$Res> get address;
+  $CompanyModelCopyWith<$Res> get company;
 }
 
 /// @nodoc
@@ -89,7 +92,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as List<AddressModel>,
+              as AddressModel,
       phone: phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -101,8 +104,22 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
       company: company == freezed
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
-              as List<CompanyModel>,
+              as CompanyModel,
     ));
+  }
+
+  @override
+  $AddressModelCopyWith<$Res> get address {
+    return $AddressModelCopyWith<$Res>(_value.address, (value) {
+      return _then(_value.copyWith(address: value));
+    });
+  }
+
+  @override
+  $CompanyModelCopyWith<$Res> get company {
+    return $CompanyModelCopyWith<$Res>(_value.company, (value) {
+      return _then(_value.copyWith(company: value));
+    });
   }
 }
 
@@ -117,10 +134,15 @@ abstract class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String name,
       String username,
       String email,
-      List<AddressModel> address,
+      AddressModel address,
       String phone,
       String website,
-      List<CompanyModel> company});
+      CompanyModel company});
+
+  @override
+  $AddressModelCopyWith<$Res> get address;
+  @override
+  $CompanyModelCopyWith<$Res> get company;
 }
 
 /// @nodoc
@@ -163,7 +185,7 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as List<AddressModel>,
+              as AddressModel,
       phone: phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -175,7 +197,7 @@ class __$UserModelCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
       company: company == freezed
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
-              as List<CompanyModel>,
+              as CompanyModel,
     ));
   }
 }
@@ -188,12 +210,10 @@ class _$_UserModel implements _UserModel {
       required this.name,
       required this.username,
       required this.email,
-      required final List<AddressModel> address,
+      required this.address,
       required this.phone,
       required this.website,
-      required final List<CompanyModel> company})
-      : _address = address,
-        _company = company;
+      required this.company});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -206,23 +226,14 @@ class _$_UserModel implements _UserModel {
   final String username;
   @override
   final String email;
-  final List<AddressModel> _address;
   @override
-  List<AddressModel> get address {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_address);
-  }
-
+  final AddressModel address;
   @override
   final String phone;
   @override
   final String website;
-  final List<CompanyModel> _company;
   @override
-  List<CompanyModel> get company {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_company);
-  }
+  final CompanyModel company;
 
   @override
   String toString() {
@@ -274,10 +285,10 @@ abstract class _UserModel implements UserModel {
       required final String name,
       required final String username,
       required final String email,
-      required final List<AddressModel> address,
+      required final AddressModel address,
       required final String phone,
       required final String website,
-      required final List<CompanyModel> company}) = _$_UserModel;
+      required final CompanyModel company}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -291,13 +302,13 @@ abstract class _UserModel implements UserModel {
   @override
   String get email => throw _privateConstructorUsedError;
   @override
-  List<AddressModel> get address => throw _privateConstructorUsedError;
+  AddressModel get address => throw _privateConstructorUsedError;
   @override
   String get phone => throw _privateConstructorUsedError;
   @override
   String get website => throw _privateConstructorUsedError;
   @override
-  List<CompanyModel> get company => throw _privateConstructorUsedError;
+  CompanyModel get company => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$UserModelCopyWith<_UserModel> get copyWith =>

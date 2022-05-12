@@ -12,8 +12,9 @@ part 'users_list_state.dart';
 part 'users_list_bloc.freezed.dart';
 
 class UsersListBloc extends Bloc<UsersListEvent, UsersListState> {
-  UsersListBloc({required UserRepository userRepository})
-      : super(const UsersListState.initial()) {
+  UsersListBloc({
+    required UserRepository userRepository,
+  }) : super(const UsersListState.initial()) {
     on<LoadUserList>((event, emit) async {
       final Either<FailureEntity, List<UserEntity>> usersEither =
           await userRepository.fetchUsers();

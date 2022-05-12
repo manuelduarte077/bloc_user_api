@@ -8,7 +8,6 @@ class JsonPlaceholderV1 {
   JsonPlaceholderV1({
     required this.httpClient,
   });
-
   final http.Client httpClient;
 
   Future<List<UserModel>> fetchUsers() async {
@@ -16,16 +15,14 @@ class JsonPlaceholderV1 {
       final response = await httpClient.get(
         Uri.https('jsonplaceholder.typicode.com', '/users'),
       );
+
       if (response.statusCode == 200) {
-        print(response.statusCode);
         try {
           final List<UserModel> users = [];
-          final data = json.decode(utf8.decode(response.bodyBytes)) as List;
-          print(users);
+          final dataUser = json.decode(utf8.decode(response.bodyBytes)) as List;
 
-          for (int i = 0; i < data.length; i++) {
-            users.add(UserModel.fromJson(data[i]));
-            print(i);
+          for (int i = 0; i < dataUser.length; i++) {
+            users.add(UserModel.fromJson(dataUser[i]));
           }
           return users;
         } on Exception {
