@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.indigo),
+        theme: ThemeData(
+          useMaterial3: true,
+        ),
         initialRoute: HomeScreen.routeName,
         onGenerateRoute: AppRouter.onGenerateRoute,
       ),
