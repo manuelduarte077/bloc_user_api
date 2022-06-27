@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_users_bloc/features/custom_navigation/custom_navigation.dart';
+
+import 'package:flutter_users_bloc/features/post/presentation/bloc/posts_list_bloc.dart';
+import 'package:flutter_users_bloc/features/post/presentation/widgets/custom_list_tile.dart';
 import 'package:flutter_users_bloc/features/user/presentation/widgets/error_dialog.dart';
-import 'package:flutter_users_bloc/features/user/presentation/bloc/users_list_bloc.dart';
-import 'package:flutter_users_bloc/features/user/presentation/widgets/custom_list_tile.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class PostsScreen extends StatelessWidget {
+  const PostsScreen({Key? key}) : super(key: key);
 
-  static const String routeName = '/';
+  static const String routeName = '/posts';
 
   static Route route() {
     return MaterialPageRoute(
       settings: const RouteSettings(name: routeName),
-      builder: (context) => const HomeScreen(),
+      builder: (_) => const PostsScreen(),
     );
   }
 
@@ -22,13 +23,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Users Bloc'),
+        elevation: 0,
+        title: const Text('Posts'),
         automaticallyImplyLeading: false,
       ),
       bottomNavigationBar: const CustomNavigation(),
       body: Stack(
         children: [
-          BlocBuilder<UsersListBloc, UsersListState>(
+          BlocBuilder<PostsListBloc, PostsListState>(
             builder: (context, state) {
               return state.when(
                 // If the state is the initial one -> then loading indicator.
@@ -38,27 +40,26 @@ class HomeScreen extends StatelessWidget {
                 loadFailure: (errorObject) =>
                     ErrorDialog(errorObject: errorObject),
                 // If the state is successful -> we show the loaded list of posts
-                loadSuccess: (users) {
-                  return ListView.builder(
-                    itemCount: users.length,
-                    itemBuilder: (context, index) {
-                      return CustomListTile(user: users[index]);
-                    },
-                  );
-                },
+                loadSuccess: (posts) => ListView.builder(
+                  itemCount: posts == null ? 0 : posts.length,
+                  itemBuilder: (context, index) {
+                    return CustomListTile(post: posts[index]);
+                  },
+                ),
               );
             },
           ),
+          // Floating action button to refresh the list.
           Positioned(
             bottom: 50,
             right: 18,
             child: FloatingActionButton(
               elevation: 0,
-              onPressed: () => BlocProvider.of<UsersListBloc>(context)
-                  .add(const LoadUserList()),
+              onPressed: () => BlocProvider.of<PostsListBloc>(context)
+                  .add(const LoadPostsList()),
               child: const Icon(Icons.refresh),
             ),
-          )
+          ),
         ],
       ),
     );

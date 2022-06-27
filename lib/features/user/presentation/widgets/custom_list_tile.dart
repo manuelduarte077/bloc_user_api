@@ -2,54 +2,39 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_users_bloc/core/presentation/text_styles.dart';
 import 'package:flutter_users_bloc/features/user/domain/entities/user_entity.dart';
+import 'package:flutter_users_bloc/features/user/presentation/screens/user_detail_screens.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
     Key? key,
-    required this.users,
+    required this.user,
   }) : super(key: key);
 
-  final UserEntity users;
+  final UserEntity user;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CircleAvatar(
-                  radius: 25,
-                  child: Text(
-                    users.id.toString(),
-                    style: TextStyles.userId,
-                  ),
-                ),
-              )
-            ],
-          ),
+    return Card(
+      borderOnForeground: true,
+      elevation: 0,
+      child: ListTile(
+        leading: Text(
+          user.id.toString(),
+          style: TextStyles.id,
         ),
-        Flexible(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(users.name.replaceAll("\n", " "),
-                    style: TextStyles.postTitle),
-                Text(users.username),
-                Text(users.email),
-                Text(users.phone),
-                Text(users.website),
-              ],
-            ),
-          ),
-        )
-      ],
+        title: Text(
+          user.name,
+          style: TextStyles.postTitle,
+        ),
+        subtitle: Text(user.company!.name),
+        trailing: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, UserDetailScreen.routeName,
+                arguments: user);
+          },
+          child: const Icon(Icons.keyboard_arrow_right),
+        ),
+      ),
     );
   }
 }

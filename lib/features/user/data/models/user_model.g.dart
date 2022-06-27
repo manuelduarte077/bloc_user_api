@@ -11,14 +11,10 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       name: json['name'] as String,
       username: json['username'] as String,
       email: json['email'] as String,
-      address: (json['address'] as List<dynamic>)
-          .map((e) => AddressModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      address: AddressModel.fromJson(json['address'] as Map<String, dynamic>),
       phone: json['phone'] as String,
       website: json['website'] as String,
-      company: (json['company'] as List<dynamic>)
-          .map((e) => CompanyModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      company: CompanyModel.fromJson(json['company'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>

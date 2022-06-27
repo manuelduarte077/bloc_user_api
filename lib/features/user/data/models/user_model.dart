@@ -13,10 +13,10 @@ class UserModel extends UserEntity with _$UserModel {
     required String name,
     required String username,
     required String email,
-    required List<AddressModel> address,
+    required AddressModel address,
     required String phone,
     required String website,
-    required List<CompanyModel> company,
+    required CompanyModel company,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

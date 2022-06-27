@@ -12,9 +12,7 @@ _$_AddressModel _$$_AddressModelFromJson(Map<String, dynamic> json) =>
       suite: json['suite'] as String,
       city: json['city'] as String,
       zipcode: json['zipcode'] as String,
-      geo: (json['geo'] as List<dynamic>)
-          .map((e) => GeoModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      geo: GeoModel.fromJson(json['geo'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_AddressModelToJson(_$_AddressModel instance) =>

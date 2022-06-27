@@ -13,7 +13,7 @@ class AddressModel extends AddressEntity with _$AddressModel {
     required String suite,
     required String city,
     required String zipcode,
-    required List<GeoModel> geo,
+    required GeoModel geo,
   }) = _AddressModel;
 
   factory AddressModel.fromJson(Map<String, dynamic> json) =>
